@@ -95,10 +95,11 @@ You can view the Heroku CICD Pipeline by going to:
 ### Heroku CLI Commands
 Install: 
 
-(On Windows)
+(On Ubuntu/WSL)
 - `sudo apt-get install libpq-dev python-dev`
 - `heroku`
-- `django-heroku`
+- `python -m pip install django-heroku`
+- Use 'heroku --version' to check if heroku is installed. Follow the command line to install heroku if needed. 
 
 (On Mac) 
 - `brew tap heroku/brew && brew install heroku`
@@ -119,5 +120,3 @@ Useful commands:
 Heroku debug: 
 - if heroku local doesn't run -> check if .env file is updated with heroku secrete key 
 - note: our .env file is in the RATTM repo, not the backend directory
-    
-To update 
