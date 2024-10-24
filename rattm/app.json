@@ -2,7 +2,7 @@
     "name": "rattm-app",
     "description": "A Django app using Firebase and running on Heroku",
     "scripts": {
-      "postdeploy": "python manage.py migrate"
+      "test": "python manage.py test"
     },
     "env": {
       "FIREBASE_CERT_URL": {
