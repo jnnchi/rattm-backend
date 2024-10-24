@@ -26,7 +26,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
-print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -149,6 +148,11 @@ django_heroku.settings(locals())
 if os.getenv('CI', 'false') == 'true':
     DATABASES = {
         'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    }
+    
+    # Prevent Django from creating a new test database on Heroku
+    DATABASES['default']['TEST'] = {
+        'MIRROR': 'default',
     }
 else:
     DATABASES = {
