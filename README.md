@@ -93,18 +93,28 @@ You can view the Heroku CICD Pipeline by going to:
 [Heroku Production Pipeline](https://dashboard.heroku.com/pipelines/2bae1f11-094f-445a-83ed-b9a4d0511b7d)
 
 ### Heroku CLI Commands
-In CLI, type heroku to see the help page. 
-Heroku commands are hierarchical: one or more subcommands after the colon. 
-
-To check running apps: heroku apps 
-
 Install: 
-sudo apt-get install libpq-dev python-dev
-heroku 
-django-heroku 
+
+(On Windows)
+- `sudo apt-get install libpq-dev python-dev`
+- `heroku`
+- `django-heroku`
+
+(On Mac) 
+- `brew tap heroku/brew && brew install heroku`
+- `pip install django-heroku`
+
+Type `heroku` to see the help page. 
+
+To check running apps: `heroku apps`
 
 If we want to store data in environment variables: 
-- "heroku config" command can be used to manage the environment variables 
+- "heroku config" command can be used to manage the environment variables
+- for example, `heroku config:get ENV_VARIABLE_NAME`
+
+Useful commands:
+- Run Locally: `heroku local:run python manage.py runserver`
+- Run Tests Locally: `heroku local:run python manage.py test`
 
 Heroku debug: 
 - if heroku local doesn't run -> check if .env file is updated with heroku secrete key 
