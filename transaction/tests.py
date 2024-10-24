@@ -5,6 +5,7 @@ from django.http import JsonResponse
 import json
 
 from transaction.views import esg_rating
+from transaction.models import Transaction
 
 # To test locally: heroku local:run python manage.py test
 
@@ -76,6 +77,23 @@ class TransactionTestCase(TestCase):
         # Check if the ESG rating is calculated correctly
         self.assertEqual(rating, 3)  # Rating is len("EcoMarket") // 3
 
+    def test_models_correctness(self):
+        """
+        Test that the Transaction model is correctly defined.
+        """
+
+        transaction = Transaction(
+            transaction_id="TXN001",
+            client_id="CL001",
+            date="2024-09-01",
+            company_name="EcoMarket",
+            location_latitude=40.7128,
+            location_longitude=-74.006,
+            transaction_amount=45.5
+        )
+
+        # Check if the model is correctly defined
+        self.assertEqual(str(transaction), "TXN001 - EcoMarket: $45.5")
 
 # Helper class to mock Firestore document
 class MockDoc:
