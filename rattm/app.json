@@ -1,0 +1,46 @@
+{
+    "name": "rattm-app",
+    "description": "A Django app using Firebase and running on Heroku",
+    "scripts": {
+      "postdeploy": "python manage.py migrate"
+    },
+    "env": {
+      "FIREBASE_CERT_URL": {
+        "description": "Firebase certificate URL",
+        "required": true
+      },
+      "FIREBASE_CLIENT_EMAIL": {
+        "description": "Firebase client email",
+        "required": true
+      },
+      "FIREBASE_CLIENT_ID": {
+        "description": "Firebase client ID",
+        "required": true
+      },
+      "FIREBASE_CREDENTIALS_JSON": {
+        "description": "Firebase credentials in JSON format",
+        "required": true
+      },
+      "FIREBASE_PRIVATE_KEY": {
+        "description": "Firebase private key",
+        "required": true
+      },
+      "FIREBASE_PRIVATE_KEY_ID": {
+        "description": "Firebase private key ID",
+        "required": true
+      },
+      "SECRET_KEY": {
+        "description": "Django secret key for cryptographic signing",
+        "generator": "secret"
+      }
+    },
+    "addons": [
+      "heroku-postgresql"
+    ],
+    "buildpacks": [
+      {
+        "url": "heroku/python"
+      }
+    ]
+  }
+  
