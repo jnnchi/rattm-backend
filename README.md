@@ -3,12 +3,12 @@
 
 **RATTM** Rage Against the Turing Machine X Cash App
 
+Click for: [Frontend Project and Detailed Readme](https://github.com/zzadxz/RATTM)
+
 ## Prerequisites
 
 Before running the project, ensure you have the following:
 - **Python** (Version 3.12 or above)
-- **Next.js** (Version 14 or above)
-- **npm** (Installed with Node.js)
 - Firebase credentials in the form of a `.json` file (details below)
 - An `.env` file with environment variables (details below)
 
