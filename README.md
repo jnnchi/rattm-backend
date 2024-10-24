@@ -17,8 +17,7 @@ Before running the project, ensure you have the following:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/zzadxz/RATTM.git
-cd RATTM
+git clone https://github.com/jnnchi/rattm-backend.git
 ```
 
 The folder you should be now in will later be referred to as "the root"
@@ -48,55 +47,25 @@ pip install -r requirements.txt
 - Create a `.env` file (in the root directory). The file should be of this format:
 
     ```bash
-    FIREBASE_CREDENTIAL_PATH="[root project path]/backend/rattm-cred-firebase.json"
-    MOCK_JSON_PATH="[root project path]/backend/resources/mockdata.json"
+    MOCK_JSON_PATH="[root project path]/resources/mockdata.json"
+    SECRET_KEY="heroku secret key"
+    FIREBASE_PRIVATE_KEY="firebase private key, with \n replaced with \\n"
+    FIREBASE_PRIVATE_KEY_ID="firebase private key id"
+    FIREBASE_CLIENT_EMAIL="firebase client email"
+    FIREBASE_CLIENT_ID="firebace client id"
+    FIREBASE_CERT_URL="https://www.googleapis.com/ url"
     ```
 
 ... where `[root project path]` is the absolute path to the root. You can find this by entering `pwd` into the terminal from the root directory.
 
-Alternatively, you could navigate to `rattm-cred-firebase.json` and `mockdata.json` in the VS code file tree, right click on them, and click "Copy Path" to get the absolute paths to these files.
-
-### 5. Install Next.js Dependencies
-
-Navigate to the `frontend` directory and install the necessary packages:
-
-```bash
-cd frontend
-npm install
-```
-
-### 6. Run the Backend (Django API)
-
-Go to the `backend` folder and run the Django development server:
-
-```bash
-cd backend
-python manage.py runserver
-```
-
-This will run the backend on `http://localhost:8000` (unless there's a port conflict, in which case the console will tell you otherwise)
-
-### 7. Run the Frontend (Next.js)
-
-Open a new terminal window or tab, navigate to the frontend directory, and start the Next.js server:
-
-```bash
-cd frontend
-npm run dev
-```
-
-The frontend will be served on `http://localhost:3000` (unless the console says otherwise).
-
-## File Structure
 
 ### Backend (Django API)
 
 ```plaintext
-backend/
+[root]/
 ├── RattmWeb/                # Project folder
 │   ├── asgi.py              # ASGI config (for async support)
 │   ├── firebase.py          # Loads Firebase DB
-│   ├── rattm-cred-firebase.json  # Firebase credentials file (not committed)
 │   ├── settings.py          # Django settings
 │   ├── urls.py              # Project endpoints
 │   ├── views.py             # Return interfaces for endpoints
@@ -105,47 +74,29 @@ backend/
 │   ├── view.py              # Functions to upload and fetch data from Firestore
 │   ├── urls.py              # Transaction-specific endpoints
 ├── manage.py                # File that runs everything
-├── routers.py               # Router setup (potentially not needed)
+├── Procfile                 # File that specifies how heroku will run the project
+├── app.json                 # Config file for Heroku CICD pipeline
 ```
 
-### Frontend (Next.js)
+## Database Endpoints & Heroku Hosting
 
-```plaintext
-frontend/
-├── src/
-│   ├── app/
-│   │   ├── modules/             # Contains subpages (ex: transaction section)
-│   │   │   └── transactions/    # Formats transaction data
-│   │   │       ├── index.tsx
-│   │   │       ├── index.styles.tsx
-│   ├── pages/
-│   │   └── main-site/           # Main page of the site
-│   │       ├── index.tsx
-│   │       ├── index.styles.tsx
-│   ├── components/              # (Not created yet) Mobile/Desktop views
-│   ├── fonts/                   # Fonts
-│   ├── favicon.icon             # Browser icon
-│   ├── globals.css              # Global styling
-│   ├── layout.tsx               # Layout for all pages (header/footer)
-│   ├── page.module.css          # Unclear purpose
-│   ├── page.tsx                 # Main page at localhost:3000
-```
-
-## Database Endpoints
-
-- `localhost:8000/api/upload` — Uploads data to Firestore
-- `localhost:8000/api/get` — Fetches and shows data from Firestore
+- `https://rattm-f300025e7172.herokuapp.com/api/get/` — Fetches and shows data from Firestore
+- `https://rattm-f300025e7172.herokuapp.com/api/upload/` — Uploads data to Firestore (not yet implemented on hosting)
 
 You can view the Firestore project by going to:
 [Firestore Console](https://console.cloud.google.com/firestore/databases/-default-/data/panel/transactions/1LpRig3D7NipgPG67P3O?project=rattm-tli)
 
-# Hosting with Heroku Notes:
+You can view the Heroku project by going to: 
+[Heroku Project](https://dashboard.heroku.com/apps/rattm)
+
+You can view the Heroku CICD Pipeline by going to: 
+[Heroku Production Pipeline](https://dashboard.heroku.com/pipelines/2bae1f11-094f-445a-83ed-b9a4d0511b7d)
+
+### Heroku CLI Commands
 In CLI, type heroku to see the help page. 
 Heroku commands are hierarchical: one or more subcommands after the colon. 
 
 To check running apps: heroku apps 
-
-Access the website: https://rattm.herokuapp.com/
 
 Install: 
 sudo apt-get install libpq-dev python-dev
