@@ -9,11 +9,12 @@ logging.basicConfig(level=logging.INFO)
 load_dotenv()
 logging.info(f"start")
 
+private_key =  os.getenv('FIREBASE_PRIVATE_KEY')
 firebase_credentials = {
   "type": "service_account",
   "project_id": "rattm-78855",
   "private_key_id": os.getenv('FIREBASE_PRIVATE_KEY_ID'),
-  "private_key": os.getenv('FIREBASE_PRIVATE_KEY').replace('\\\\n','\n'),
+  "private_key": private_key.replace('\\\\n','\n') if '\\\\n' in private_key else private_key.replace('\\n','\n'),
   "client_email": os.getenv('FIREBASE_CLIENT_EMAIL'),
   "client_id": os.getenv('FIREBASE_CLIENT_ID'),
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",

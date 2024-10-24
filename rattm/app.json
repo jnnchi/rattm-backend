@@ -2,7 +2,7 @@
     "name": "rattm-app",
     "description": "A Django app using Firebase and running on Heroku",
     "scripts": {
-      "test": "heroku local:run python manage.py test"
+      "test": "python manage.py test"
     },
     "env": {
       "FIREBASE_CERT_URL": {
@@ -19,7 +19,7 @@
       },
       "FIREBASE_CREDENTIALS_JSON": {
         "description": "Firebase credentials in JSON format",
-        "required": true
+        "required": false
       },
       "FIREBASE_PRIVATE_KEY": {
         "description": "Firebase private key",
