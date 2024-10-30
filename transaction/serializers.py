@@ -17,3 +17,5 @@ class TransactionSerializer(serializers.ModelSerializer):
             'location_longitude',
             'transaction_amount'
         ]
+
+class ESGSerializer(serializers.ModelSerializer)
