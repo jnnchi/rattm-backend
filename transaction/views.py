@@ -14,11 +14,14 @@ def upload_data_to_firestore(request):
         data = json.load(file)
 
     try:
-        # don't need to first create the table, can just start adding and the table will be created
-        # data is a dictionary with {key - transactionid : value - {dict of all transaction info}}
-        for transaction_id in data:
-            db.collection('transactions').add(data[transaction_id])
+        for transaction in data['data']:
+            transaction_id = transaction.get("transactionID")  # Get the transaction ID
+            # Remove 'transactionID' from the dictionary to avoid duplication in Firestore
+            transaction_data = {k: v for k, v in transaction.items() if k != "transactionID"}
+            # Use transaction_id as the document ID and add the rest as the document data
+            db.collection('transactions').document(str(transaction_id)).set(transaction_data)
         return JsonResponse({'message': 'Data uploaded successfully'}, status=200)
+
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
