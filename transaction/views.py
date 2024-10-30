@@ -6,7 +6,7 @@ import json
 import os
 
 # Put data in Firestore
-# endpoint: /api/transaction/upload
+# endpoint: /transaction/upload
 def upload_data_to_firestore(request):
     load_dotenv()
     mock_json_path = os.getenv('MOCK_JSON_PATH')
@@ -26,7 +26,7 @@ def upload_data_to_firestore(request):
         return JsonResponse({'error': str(e)}, status=500)
 
 # Get data from Firestore
-# endpoint: /api/transaction/get
+# endpoint: /transaction/get
 def get_data_from_firestore(request):
     try:
         transactions_ref = db.collection('transactions')
@@ -36,7 +36,7 @@ def get_data_from_firestore(request):
         # a document is a row in the table (transaction obj)
         for doc in docs:
             transaction = doc.to_dict()
-            transaction["rating"] = esg_rating(transaction)
+            #transaction["rating"] = esg_rating(transaction)
             transactions.append(transaction)
 
         return JsonResponse(transactions, safe=False, status=200)

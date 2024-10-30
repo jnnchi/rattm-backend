@@ -23,6 +23,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('transaction.urls')),
+    path('transaction/', include('transaction.urls')),
     path('esg/', include('esg.urls')),
 ]

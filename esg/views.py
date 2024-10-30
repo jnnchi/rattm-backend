@@ -6,7 +6,7 @@ import csv
 import json
 import os
 
-# endpoint: /api/esg/upload
+# endpoint: /esg/upload
 def upload_data_to_firestore(request):
     load_dotenv()
     esg_path = os.getenv('ESG_PATH')
@@ -25,7 +25,7 @@ def upload_data_to_firestore(request):
 
 
 # as we move forward, this can be deleted 
-# endpoint: /api/esg/get
+# endpoint: /esg/get
 def get_data_from_firestore(request):
     try:
         docs = db.collection('esg').stream()
