@@ -3,6 +3,8 @@ from rest_framework import viewsets
 from .models import EnvImpactHistory
 from .serializers import EnvImpactHistorySerializer
 
-class EnvImpactHistoryViewSet(viewsets.ModelViewSet):
-    queryset = EnvImpactHistory.objects.all()
-    serializer_class = EnvImpactHistorySerializer
+def get_change_in_score(request):
+    
+def get_total_green_transactions(requset):
+
+def get_
