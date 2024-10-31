@@ -12,11 +12,19 @@ def upload_data_to_firestore(request):
     esg_path = os.getenv('ESG_PATH')
     with open(esg_path, 'r') as file:
         data = json.load(file)
+    
+    try:
+        doc = db.collection('test').document('testDoc')
+        doc.set({'connected': True})
+        print("Firebase is connected, and data was written successfully.")
+    except Exception as e:
+        print("Connection Error:", e)
 
     try:
         if db.collection('esg').get():
             db.collection('esg').delete()
         for info in data: 
+            print('hi')
             company_name = info.get("name")
             entries = {k: v for k, v in info.items() if k != "name"}
             db.collection('esg').document(str(company_name)).set(entries)

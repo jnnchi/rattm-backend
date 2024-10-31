@@ -21,6 +21,13 @@ def upload_data_to_firestore(request):
     ip_to_user = {}
     user_id = 0
 
+    try:
+        doc = db.collection('test').document('testDoc')
+        doc.set({'connected': True})
+        print("Firebase is connected, and data was written successfully.")
+    except Exception as e:
+        print("Connection Error:", e)
+
     for i in ip:
         ip_to_user[i] = user_id
         user_id += 1
@@ -30,9 +37,10 @@ def upload_data_to_firestore(request):
 
     try:
         for transaction in data:
-            transaction_id = transaction.get("transactionID")  # Get the transaction ID
+            transaction_id = transaction["transactionID"]  # Get the transaction ID
             # Remove 'transactionID' from the dictionary to avoid duplication in Firestore
             transaction_data = {k: v for k, v in transaction.items() if k != "transactionID"}
+            print(transaction_data)
             # Use transaction_id as the document ID and add the rest as the document data
             db.collection('transactions').document(str(transaction_id)).set(transaction_data)
         return JsonResponse({'message': 'Data uploaded successfully'}, status=200)
