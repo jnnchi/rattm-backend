@@ -1,6 +1,6 @@
 # Assuming that all the transactions in a user is stored in a list of dictionaries
 # transactions = [{"company": "Apple", "amount": 100, "time":2024-03-06}]
-import datetime.datetime
+from datetime import datetime
 
 # Assuming that the ESG_scores is a dictionary, 
 # whose key is the company's name and the value is the ESG score of the company
