@@ -14,6 +14,8 @@ def upload_data_to_firestore(request):
         data = json.load(file)
 
     try:
+        if db.collection('esg').get():
+            db.collection('esg').delete()
         for info in data: 
             company_name = info.get("name")
             entries = {k: v for k, v in info.items() if k != "name"}
@@ -39,6 +41,7 @@ def get_data_from_firestore(request):
     
 
 # get indivudual esg scores for company, need to be updated 
+# end point: /esg/get/<company_name>
 def get_individual_company_score(company_name):
     try:
         results = db.collection('esg').where('merchant_name', '==', company_name).limit(1).stream()
