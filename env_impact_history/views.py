@@ -4,12 +4,16 @@ from .models import EnvImpactHistory
 from .serializers import EnvImpactHistorySerializer
 from .use_case import get_score, get_total_green_transactions, get_most_purchased_companies, get_ESG_score_of_transaction_companies
 # Here we do the data structure conversion for the entity.py functions
-# def get_score(request):
+def get_score(request):
+    return None
 
-# def get_ESG_score_of_transaction_companies(request):
+def get_ESG_score_of_transaction_companies(request):
+    return None
     
-# def get_total_green_transactions(request):
+def get_total_green_transactions(request):
+    return None
 
-# def get_most_purchased_companies(request):
+def get_most_purchased_companies(request):
+    return None
     
     

@@ -1,7 +1,7 @@
 # env_impact_history/urls.py
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import EnvImpactHistory
+from .views import get_score, get_total_green_transactions, get_most_purchased_companies
 
 urlpatterns = [
     path('get_scr', get_score, name='get_score'),

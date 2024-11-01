@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 load_dotenv()
 logging.info(f"start")
 
-private_key =  os.getenv('FIREBASE_PRIVATE_KEY')
+private_key = os.getenv('FIREBASE_PRIVATE_KEY')
 firebase_credentials = {
   "type": "service_account",
   "project_id": "rattm-78855",
