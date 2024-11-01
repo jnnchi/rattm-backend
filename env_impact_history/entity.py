@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Assuming that the ESG_scores is a dictionary, 
 # whose key is the company's name and the value is the ESG score of the company
-def get_score(user: User, start: datetime, end: datetime, ESG_scores: Dict) -> float:
+def get_score(user: ..., start: datetime, end: datetime, ESG_scores: dict) -> float:
     """
     Calculate the environmental impact score of a user
     """
@@ -27,7 +27,7 @@ def get_score(user: User, start: datetime, end: datetime, ESG_scores: Dict) -> f
     
     return env_contribution / total_spending
 
-def get_ESG_score_of_transaction_companies(user: User, ESG_scores: Dict) -> List[Dict[str, float]]:
+def get_ESG_score_of_transaction_companies(user: ..., ESG_scores: dict) -> list[dict[str, float]]:
     """
     Calculate the ESG score of the companies that the user has made transactions with
     """
@@ -39,7 +39,7 @@ def get_ESG_score_of_transaction_companies(user: User, ESG_scores: Dict) -> List
     
     return company_ESG_scores
 
-def get_total_green_transactions(user: User, ESG_scores: Dict) -> int:
+def get_total_green_transactions(user: ..., ESG_scores: dict) -> int:
     """
     25th percentile: 245.0
     50th percentile: 500.0
@@ -55,7 +55,7 @@ def get_total_green_transactions(user: User, ESG_scores: Dict) -> int:
     
     return green_transactions
 
-def get_most_purchased_companies(user: User, ESG_scores: Dict) -> List[Dict[str, float]]:
+def get_most_purchased_companies(user: ..., ESG_scores: dict) -> list[dict[str, float]]:
     """
     Gets most purchased companies of all time, returns a list of dictionary, where dictionaries 
     contain the company name, the ESG score of the company and the amount spent on that company

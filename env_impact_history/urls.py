@@ -1,10 +1,10 @@
 # env_impact_history/urls.py
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import EnvImpactHistoryViewSet
+from .views import EnvImpactHistory
 
 router = DefaultRouter()
-router.register(r'env_impact_history', EnvImpactHistoryViewSet)
+router.register(r'env_impact_history', EnvImpactHistory)
 
 urlpatterns = [
     path('get_scr', get_score, name='get_score'),
