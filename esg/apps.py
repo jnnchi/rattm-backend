@@ -6,4 +6,4 @@ class EsgConfig(AppConfig):
     name = 'esg'
     
     def ready(self):
-        from utils.firebase import db
+        from utils.firebase import dbs

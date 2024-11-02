@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "corsheaders",
     # installed apps
     "transaction",
+    "env_impact_history"
 ]
 
 MIDDLEWARE = [
