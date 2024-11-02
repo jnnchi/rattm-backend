@@ -25,5 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('transaction/', include('transaction.urls')),
     path('esg/', include('esg.urls')),
-    path('env_impact_history/', include('env_impact_history.urls'))
+    path('login/', include('login.urls')),
 ]
